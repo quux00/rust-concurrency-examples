@@ -9,8 +9,7 @@ use std::os;
 // Rob Pike's talk on Google I/O 2012:
 // http://www.youtube.com/watch?v=f6kdp27TYZs&feature=youtu.be
 //
-// This gist is modified based on Alexey Kachayev's gist transcriptions
-// of Pike's code: https://gist.github.com/quux00/4428907
+// Gist I made of Pike's code: https://gist.github.com/quux00/4428907
 //
 
 fn main() {
@@ -27,7 +26,6 @@ fn main() {
 fn boring(msg: ~str) -> Port<~str> {
     let (port, chan): (Port<~str>, Chan<~str>) = Chan::new();
     do spawn {
-        // TODO: change to infinite loop (are spawned tasks daemons in Rust?)
         let mut i = 0;
         loop {
             let success = chan.try_send(format!("{} {}", msg, i));
